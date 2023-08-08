@@ -1,9 +1,9 @@
 class Bank:
 
     def __init__(self):
-        self.Balance=0
-        self.pin=""
-        self.pin=int(input("Set Your Pin:"))
+        self.__Balance=0
+        self.__pin=""
+        self.__pin=int(input("Set Your Pin:"))
         print("PIN Set Successfully!")
 
         self.menu()
@@ -34,8 +34,8 @@ class Bank:
 
     def changePin(self):
         c=int(input("\nEnter Old Pin:"))
-        if c==self.pin:
-            self.pin=int(input("Enter New Pin:"))
+        if c==self.__pin:
+            self.__pin=int(input("Enter New Pin:"))
             print("PIN Changed Successfully!")
             self.menu()
         else:
@@ -44,8 +44,8 @@ class Bank:
     
     def deposit(self):
         if self.pinValidation():
-                self.Balance+=int(input("Enter Amount To Deposit:"))
-                print("\nDeposit Successfull!!\nYour Current Balance Is:",self.Balance)
+                self.__Balance+=int(input("Enter Amount To Deposit:"))
+                print("\nDeposit Successfull!!\nYour Current Balance Is:",self.__Balance)
                 self.menu()
         else:
             print("\nWrong Passcode!!")
@@ -53,15 +53,15 @@ class Bank:
     
     def pinValidation(self):
         c=int(input("Enter Pin:"))
-        if c==self.pin:
+        if c==self.__pin:
             return True
         return False
     
     def withdraw(self):
         if self.pinValidation():
             c=int(input("\nEnter Amount To Withdraw:"))
-            if c<=self.Balance:
-                self.Balance-=c
+            if c<=self.__Balance:
+                self.__Balance-=c
                 print("\nTransaction Successfull!!")
                 self.menu()
             else:
@@ -73,7 +73,7 @@ class Bank:
     
     def checkBalance(self):
         if self.pinValidation():
-            print("\nYour Current Balance Is:",self.Balance)
+            print("\nYour Current Balance Is:",self.__Balance)
             self.menu()
         else:
             print("\nWrong Pin!")
@@ -82,3 +82,5 @@ class Bank:
 
 
 Bank()
+
+    
